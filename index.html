@@ -114,3 +114,310 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08111f">
+  <title>EarnTrust — Work Honestly, Earn Confidently</title>
+  <meta name="description" content="EarnTrust — অনলাইন কাজের সুযোগ, স্বচ্ছ নিয়ম এবং দক্ষতা উন্নয়নের একটি উদ্যোগ।">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #08111f;
+      color: #f1f5f9;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    header {
+      border-bottom: 1px solid #223047;
+      background: #0b1526;
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+      color: #5eead4;
+      text-decoration: none;
+    }
+    .logo span { color: #f8fafc; }
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .hero {
+      text-align: center;
+      padding: 85px 0 65px;
+      background:
+        radial-gradient(ellipse at 50% 0%, #123d3b 0%, transparent 58%);
+    }
+    .pill {
+      display: inline-block;
+      border: 1px solid #28665c;
+      color: #99f6e4;
+      background: #102c2c;
+      border-radius: 99px;
+      padding: 5px 13px;
+      font-size: 13px;
+    }
+    h1 {
+      max-width: 800px;
+      margin: 22px auto 15px;
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+    }
+    .gradient {
+      background: linear-gradient(90deg, #5eead4, #86efac);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 18px auto;
+      color: #b9c7d9;
+      font-size: 17px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: linear-gradient(100deg, #5eead4, #86efac);
+      color: #07151a;
+      transition: transform .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.secondary {
+      background: #111e31;
+      border: 1px solid #34445c;
+      color: #f1f5f9;
+    }
+    .notice {
+      margin: 0 auto 20px;
+      max-width: 850px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid #665226;
+      background: #292313;
+      color: #fde68a;
+      font-size: 14px;
+    }
+    section { padding: 48px 0; }
+    .section-title { text-align: center; margin: 0 0 10px; font-size: 30px; }
+    .section-subtitle {
+      text-align: center;
+      color: #9eacc0;
+      max-width: 650px;
+      margin: 0 auto 28px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      padding: 23px;
+      background: linear-gradient(145deg, #142238, #0e192b);
+      border: 1px solid #263850;
+      border-radius: 16px;
+    }
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #173b3b;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 19px; color: #8ef0d9; }
+    .card p { color: #b7c4d6; margin: 0; font-size: 15px; }
+    .steps { counter-reset: step; }
+    .step { position: relative; }
+    .step h3 { color: #f1f5f9; }
+    .step .card-icon { color: #99f6e4; font-weight: bold; }
+    .cta {
+      text-align: center;
+      padding: 38px 24px;
+      border: 1px solid #28554f;
+      border-radius: 20px;
+      background: radial-gradient(ellipse at top, #123b37, #101d2d 75%);
+    }
+    .cta h2 { margin-top: 0; font-size: 28px; }
+    .cta p { color: #c0cede; }
+    footer {
+      margin-top: 35px;
+      padding: 28px 0;
+      border-top: 1px solid #223047;
+      text-align: center;
+      color: #93a3b8;
+      font-size: 14px;
+    }
+    footer a { color: #8debd7; text-decoration: none; }
+    @media (max-width: 720px) {
+      .nav { min-height: 68px; }
+      .nav-link { font-size: 12px; }
+      .hero { padding: 62px 0 42px; }
+      .hero p { font-size: 15px; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 35px 0; }
+      .section-title { font-size: 26px; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="index.html">Earn<span>Trust</span></a>
+      <a class="nav-link" href="#about">আমাদের সম্পর্কে</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="container">
+        <span class="pill">✦ সততা • স্বচ্ছতা • অগ্রগতি</span>
+        <h1>কাজের সুযোগ খুঁজুন,<br><span class="gradient">দক্ষতার সঙ্গে এগিয়ে যান</span></h1>
+        <p>
+          EarnTrust এমন একটি প্ল্যাটফর্ম তৈরির উদ্যোগ, যেখানে
+          অনলাইন কাজের সুযোগ, পরিষ্কার নিয়ম এবং দায়িত্বশীলভাবে
+          কাজ করার অভিজ্ঞতাকে গুরুত্ব দেওয়া হবে।
+        </p>
+        <div class="actions">
+          <a class="button" href="tasks.html">কাজের বিভাগ দেখুন →</a>
+          <a class="button secondary" href="#how-it-works">কীভাবে কাজ করবে?</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="notice">
+        <strong>বর্তমান অবস্থা:</strong>
+        EarnTrust এখনো তৈরির পর্যায়ে রয়েছে। বাস্তব কাজ, পুরস্কার,
+        আয় ও টাকা তোলার ব্যবস্থা চালু হয়নি। চালুর আগে নিয়ম ও
+        যোগ্যতার শর্ত জানানো হবে।
+      </div>
+    </div>
+
+    <section id="tasks">
+      <div class="container">
+        <h2 class="section-title">কাজের সম্ভাব্য বিভাগ</h2>
+        <p class="section-subtitle">
+          অনুমোদিত কাজ পাওয়া গেলে এই বিভাগে বিস্তারিত তথ্য প্রকাশ করা হবে।
+        </p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">📝</div>
+            <h3>ছোট অনলাইন কাজ</h3>
+            <p>সহজ ডিজিটাল কাজের নির্দেশনা, যোগ্যতা এবং কাজের শর্ত।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🔎</div>
+            <h3>তথ্য যাচাই</h3>
+            <p>নির্দেশনা অনুযায়ী তথ্য পরীক্ষা ও যাচাইয়ের সম্ভাব্য কাজ।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3>ডিজিটাল দক্ষতা</h3>
+            <p>অনলাইন কাজের জন্য প্রয়োজনীয় দক্ষতা শেখা ও উন্নয়নের সুযোগ।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <h2 class="section-title">কীভাবে কাজ করবে?</h2>
+        <p class="section-subtitle">
+          প্রকৃত কাজ ও পেমেন্ট চালু হলে পরিকল্পিত প্রক্রিয়া হবে এমন।
+        </p>
+        <div class="cards steps">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>নিয়ম বুঝুন</h3>
+            <p>কাজের শর্ত, যোগ্যতা এবং পুরস্কারের নিয়ম আগে পড়ুন।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>কাজ সম্পন্ন করুন</h3>
+            <p>নির্দেশনা অনুসরণ করে কাজ করুন এবং প্রয়োজনীয় প্রমাণ দিন।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>যাচাইয়ের অপেক্ষা করুন</h3>
+            <p>কাজ যাচাই ও পেমেন্ট ব্যবস্থা চালু হলে নিয়ম অনুযায়ী ফলাফল জানানো হবে।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">কেন EarnTrust?</h2>
+        <p class="section-subtitle">
+          আমাদের লক্ষ্য—বিশ্বাসযোগ্য তথ্য, স্পষ্ট নিয়ম এবং দায়িত্বশীল কাজের পরিবেশ।
+        </p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>স্বচ্ছ নিয়ম</h3>
+            <p>প্রতিটি কাজের শর্ত ও পুরস্কারের নিয়ম পরিষ্কারভাবে জানানো হবে।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🤝</div>
+            <h3>সততা আগে</h3>
+            <p>বাস্তব সুযোগ ছাড়া আয়ের নিশ্চয়তা বা ভুয়া প্রতিশ্রুতি দেওয়া হবে না।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🔐</div>
+            <h3>নিরাপত্তাকে গুরুত্ব</h3>
+            <p>ব্যবহারকারীর তথ্য সুরক্ষার উপযুক্ত ব্যবস্থা তৈরি করা আমাদের লক্ষ্য।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>EarnTrust-এর সঙ্গে এগিয়ে চলুন</h2>
+          <p>প্ল্যাটফর্ম প্রস্তুত হলে এখানে বাস্তব কাজ ও নিয়মের আপডেট প্রকাশ করা হবে।</p>
+          <a class="button" href="tasks.html">কাজের বিভাগ দেখুন →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 EarnTrust. All rights reserved.<br>
+      Work Honestly. Earn Confidently.
+    </div>
+  </footer>
+</body>
+</html>
