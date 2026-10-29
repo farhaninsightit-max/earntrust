@@ -62,3 +62,77 @@ footer{text-align:center;padding:25px;color:#94a3b8;border-top:1px solid #26344c
 <footer>© 2026 EarnTrust · Work Honestly. Earn Confidently.</footer>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EarnTrust — কাজের তালিকা</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:#0b1220;color:#f8fafc;font-family:Arial,sans-serif;line-height:1.6}
+main{max-width:900px;margin:auto}
+h1{color:#4ade80}
+.notice{background:#332b16;border:1px solid #8a6a20;padding:14px;border-radius:10px;color:#fde68a}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:#142036;padding:20px;border:1px solid #293952;border-radius:12px}
+.card h2{color:#4ade80;font-size:20px}
+.pay{font-weight:bold;color:#86efac}
+a{color:#4ade80}
+button{padding:9px 14px;border:0;border-radius:7px;background:#334155;color:white}
+</style>
+</head>
+<body>
+<main>
+<h1>EarnTrust — কাজের তালিকা</h1>
+<p class="notice">এটি পরীক্ষামূলক ডেমো। এখানে প্রদর্শিত কাজগুলো বাস্তব কাজ বা নিশ্চিত আয়ের সুযোগ নয়। কোনো পেমেন্ট চালু নেই।</p>
+<p><a href="admin.html">Admin Panel →</a> | <a href="index.html">হোম পেজ</a></p>
+<div id="tasks" class="cards"></div>
+
+<script>
+const KEY = "earntrust_demo_tasks_v1";
+const container = document.getElementById("tasks");
+
+function showTasks() {
+  container.replaceChildren();
+  let tasks = [];
+  try {
+    tasks = JSON.parse(localStorage.getItem(KEY) || "[]");
+    if (!Array.isArray(tasks)) tasks = [];
+  } catch {
+    tasks = [];
+  }
+
+  if (!tasks.length) {
+    container.textContent = "এখনো কোনো ডেমো কাজ যোগ করা হয়নি।";
+    return;
+  }
+
+  tasks.forEach(task => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const title = document.createElement("h2");
+    title.textContent = task.name || "নাম দেওয়া হয়নি";
+
+    const description = document.createElement("p");
+    description.textContent = task.description || "";
+
+    const pay = document.createElement("p");
+    pay.className = "pay";
+    pay.textContent = "ডেমো পারিশ্রমিক: ৳" + String(task.pay ?? "0");
+
+    const status = document.createElement("p");
+    status.textContent = "পরীক্ষামূলক — বাস্তব কাজ নয়";
+
+    card.append(title, description, pay, status);
+    container.appendChild(card);
+  });
+}
+
+showTasks();
+</script>
+</main>
+</body>
+</html>
