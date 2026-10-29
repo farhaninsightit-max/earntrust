@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EarnTrust Admin Panel</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #0b1220; color: #f8fafc;
+    }
+    .container {
+      max-width: 600px; margin: 25px auto;
+      background: #142036; padding: 22px;
+      border-radius: 14px;
+    }
+    h1 { color: #4ade80; }
+    label { display: block; margin-top: 15px; }
+    input, textarea {
+      width: 100%; padding: 12px; margin-top: 6px;
+      border-radius: 8px; border: 1px solid #475569;
+      background: #0b1220; color: white; font-size: 16px;
+    }
+    button {
+      margin-top: 18px; padding: 12px 18px;
+      background: #22c55e; color: #07120a;
+      border: 0; border-radius: 8px;
+      font-size: 16px; font-weight: bold;
+    }
+    .notice { color: #fde68a; line-height: 1.7; }
+    a { color: #4ade80; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>EarnTrust Admin Panel</h1>
+    <p class="notice">
+      এটি প্রাথমিক ডেমো ফর্ম। এখানে দেওয়া তথ্য এখনো
+      স্থায়ীভাবে সংরক্ষিত হবে না এবং কাজের তালিকায়
+      প্রকাশিত হবে না।
+    </p>
+
+    <form id="taskForm">
+      <label for="taskName">কাজের নাম</label>
+      <input id="taskName" required
+        placeholder="যেমন: বাংলা লেখা">
+
+      <label for="taskDescription">কাজের বিবরণ</label>
+      <textarea id="taskDescription" rows="4" required
+        placeholder="কী করতে হবে লিখুন"></textarea>
+
+      <label for="taskPay">পারিশ্রমিক (টাকা)</label>
+      <input id="taskPay" type="number"
+        min="0" step="0.01" required placeholder="যেমন: ১০">
+
+      <button type="submit">ডেমো কাজ তৈরি করুন</button>
+    </form>
+
+    <div id="result" aria-live="polite"></div>
+    <p><a href="index.html">← হোম পেজে ফিরে যান</a></p>
+  </div>
+
+  <script>
+    document.getElementById("taskForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("result").textContent =
+        "ডেমো ফর্ম পরীক্ষা সফল। তথ্য সংরক্ষিত হয়নি; ব্যাকএন্ড যুক্ত করতে হবে।";
+    });
+  </script>
+</body>
+</html>
