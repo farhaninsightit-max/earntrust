@@ -2,73 +2,66 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EarnTrust Admin Panel</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #0b1220; color: #f8fafc;
-    }
-    .container {
-      max-width: 600px; margin: 25px auto;
-      background: #142036; padding: 22px;
-      border-radius: 14px;
-    }
-    h1 { color: #4ade80; }
-    label { display: block; margin-top: 15px; }
-    input, textarea {
-      width: 100%; padding: 12px; margin-top: 6px;
-      border-radius: 8px; border: 1px solid #475569;
-      background: #0b1220; color: white; font-size: 16px;
-    }
-    button {
-      margin-top: 18px; padding: 12px 18px;
-      background: #22c55e; color: #07120a;
-      border: 0; border-radius: 8px;
-      font-size: 16px; font-weight: bold;
-    }
-    .notice { color: #fde68a; line-height: 1.7; }
-    a { color: #4ade80; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EarnTrust Admin Demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:#0b1220;color:#f8fafc;font-family:Arial,sans-serif}
+main{max-width:600px;margin:25px auto;background:#142036;padding:22px;border-radius:14px}
+h1{color:#4ade80}
+label{display:block;margin-top:15px}
+input,textarea{width:100%;padding:12px;margin-top:6px;border-radius:8px;border:1px solid #475569;background:#0b1220;color:white;font-size:16px}
+button{margin-top:18px;padding:12px 18px;background:#22c55e;color:#07120a;border:0;border-radius:8px;font-weight:bold}
+.notice{color:#fde68a;line-height:1.6}
+a{color:#4ade80}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>EarnTrust Admin Panel</h1>
-    <p class="notice">
-      এটি প্রাথমিক ডেমো ফর্ম। এখানে দেওয়া তথ্য এখনো
-      স্থায়ীভাবে সংরক্ষিত হবে না এবং কাজের তালিকায়
-      প্রকাশিত হবে না।
-    </p>
+<main>
+<h1>EarnTrust Admin Panel</h1>
+<p class="notice">ডেমো: কাজ এই ব্রাউজারে সাময়িকভাবে সংরক্ষিত হবে। এটি নিরাপদ বা স্থায়ী অ্যাডমিন সিস্টেম নয়।</p>
 
-    <form id="taskForm">
-      <label for="taskName">কাজের নাম</label>
-      <input id="taskName" required
-        placeholder="যেমন: বাংলা লেখা">
+<form id="taskForm">
+<label for="name">কাজের নাম</label>
+<input id="name" required maxlength="100" placeholder="যেমন: বাংলা লেখা">
 
-      <label for="taskDescription">কাজের বিবরণ</label>
-      <textarea id="taskDescription" rows="4" required
-        placeholder="কী করতে হবে লিখুন"></textarea>
+<label for="description">কাজের বিবরণ</label>
+<textarea id="description" required maxlength="1000" rows="4" placeholder="কাজের নির্দেশনা"></textarea>
 
-      <label for="taskPay">পারিশ্রমিক (টাকা)</label>
-      <input id="taskPay" type="number"
-        min="0" step="0.01" required placeholder="যেমন: ১০">
+<label for="pay">পারিশ্রমিক (টাকা)</label>
+<input id="pay" type="number" min="0" step="0.01" required placeholder="যেমন: ১০">
 
-      <button type="submit">ডেমো কাজ তৈরি করুন</button>
-    </form>
+<button type="submit">ডেমো কাজ যোগ করুন</button>
+</form>
 
-    <div id="result" aria-live="polite"></div>
-    <p><a href="index.html">← হোম পেজে ফিরে যান</a></p>
-  </div>
+<p id="message" aria-live="polite"></p>
+<p><a href="tasks.html">কাজের তালিকা দেখুন →</a></p>
+<p><a href="index.html">← হোম পেজে ফিরুন</a></p>
+</main>
 
-  <script>
-    document.getElementById("taskForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "ডেমো ফর্ম পরীক্ষা সফল। তথ্য সংরক্ষিত হয়নি; ব্যাকএন্ড যুক্ত করতে হবে।";
-    });
-  </script>
+<script>
+const KEY = "earntrust_demo_tasks_v1";
+document.getElementById("taskForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const task = {
+    id: Date.now(),
+    name: document.getElementById("name").value.trim(),
+    description: document.getElementById("description").value.trim(),
+    pay: document.getElementById("pay").value
+  };
+  try {
+    const tasks = JSON.parse(localStorage.getItem(KEY) || "[]");
+    tasks.push(task);
+    localStorage.setItem(KEY, JSON.stringify(tasks));
+    document.getElementById("message").textContent =
+      "ডেমো কাজ যোগ হয়েছে। একই ব্রাউজারে কাজের তালিকা দেখো।";
+    this.reset();
+  } catch {
+    document.getElementById("message").textContent =
+      "সংরক্ষণ করা যায়নি। ব্রাউজারের স্টোরেজ পরীক্ষা করো।";
+  }
+});
+</script>
 </body>
 </html>
